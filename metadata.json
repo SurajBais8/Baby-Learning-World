@@ -1,0 +1,6 @@
+{
+  "name": "Baby Learning World",
+  "description": "An interactive, colorful educational learning world for kids aged 3-7. Learn ABC, Numbers, Colors, Animals, Fruits, Shapes, Tracing, and play Memory games with Hindi and English voice guidance, rewards, parent dashboard, and daily learning streaks!",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
