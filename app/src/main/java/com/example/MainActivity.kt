@@ -114,6 +114,76 @@ class MainActivity : ComponentActivity() {
                                 onBack = { navController.popBackStack() }
                             )
                         }
+                        composable("habits") {
+                            HabitsScreen(
+                                viewModel = mainViewModel,
+                                lang = userProgress.lang,
+                                onBack = { navController.popBackStack() }
+                            )
+                        }
+                        composable("opposites") {
+                            OppositesScreen(
+                                viewModel = mainViewModel,
+                                lang = userProgress.lang,
+                                onBack = { navController.popBackStack() }
+                            )
+                        }
+                        composable("planets") {
+                            SolarSystemScreen(
+                                viewModel = mainViewModel,
+                                lang = userProgress.lang,
+                                onBack = { navController.popBackStack() }
+                            )
+                        }
+                        composable("instruments") {
+                            InstrumentsScreen(
+                                viewModel = mainViewModel,
+                                lang = userProgress.lang,
+                                onBack = { navController.popBackStack() }
+                            )
+                        }
+                        composable("birds") {
+                            BirdsScreen(
+                                viewModel = mainViewModel,
+                                lang = userProgress.lang,
+                                onBack = { navController.popBackStack() }
+                            )
+                        }
+                        composable("vegetables") {
+                            VegetablesScreen(
+                                viewModel = mainViewModel,
+                                lang = userProgress.lang,
+                                onBack = { navController.popBackStack() }
+                            )
+                        }
+                        composable("body_parts") {
+                            BodyPartsScreen(
+                                viewModel = mainViewModel,
+                                lang = userProgress.lang,
+                                onBack = { navController.popBackStack() }
+                            )
+                        }
+                        composable("quiz") {
+                            QuizScreen(
+                                viewModel = mainViewModel,
+                                lang = userProgress.lang,
+                                onBack = { navController.popBackStack() }
+                            )
+                        }
+                        composable("drawing") {
+                            DrawingScreen(
+                                viewModel = mainViewModel,
+                                lang = userProgress.lang,
+                                onBack = { navController.popBackStack() }
+                            )
+                        }
+                        composable("settings") {
+                            SettingsScreen(
+                                viewModel = mainViewModel,
+                                lang = userProgress.lang,
+                                onBack = { navController.popBackStack() }
+                            )
+                        }
                         composable("parent_rewards") {
                             ParentRewardsScreen(
                                 progress = userProgress,

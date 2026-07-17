@@ -100,7 +100,13 @@ class MainViewModel(application: Application) : AndroidViewModel(application), T
 
     private fun updateTtsLanguage() {
         if (isTtsReady) {
-            val locale = if (userProgress.value.lang == "hi") Locale("hi", "IN") else Locale.US
+            val locale = when (userProgress.value.lang) {
+                "hi" -> Locale("hi", "IN")
+                "es" -> Locale("es", "ES")
+                "fr" -> Locale.FRANCE
+                "ar" -> Locale("ar")
+                else -> Locale.US
+            }
             tts?.language = locale
         }
     }
@@ -108,9 +114,19 @@ class MainViewModel(application: Application) : AndroidViewModel(application), T
     fun speak(textEn: String, textHi: String) {
         if (isTtsReady) {
             val currentLang = userProgress.value.lang
-            val locale = if (currentLang == "hi") Locale("hi", "IN") else Locale.US
+            val locale = when (currentLang) {
+                "hi" -> Locale("hi", "IN")
+                "es" -> Locale("es", "ES")
+                "fr" -> Locale.FRANCE
+                "ar" -> Locale("ar")
+                else -> Locale.US
+            }
             tts?.language = locale
-            val textToSpeak = if (currentLang == "hi") textHi else textEn
+            val textToSpeak = when (currentLang) {
+                "hi" -> textHi
+                "en" -> textEn
+                else -> TranslationHelper.translate(textEn, currentLang)
+            }
             tts?.speak(textToSpeak, TextToSpeech.QUEUE_FLUSH, null, "BABY_LEARN_TTS")
         }
     }
@@ -118,18 +134,57 @@ class MainViewModel(application: Application) : AndroidViewModel(application), T
     fun speakDirect(text: String) {
         if (isTtsReady) {
             val currentLang = userProgress.value.lang
-            val locale = if (currentLang == "hi") Locale("hi", "IN") else Locale.US
+            val locale = when (currentLang) {
+                "hi" -> Locale("hi", "IN")
+                "es" -> Locale("es", "ES")
+                "fr" -> Locale.FRANCE
+                "ar" -> Locale("ar")
+                else -> Locale.US
+            }
             tts?.language = locale
-            tts?.speak(text, TextToSpeech.QUEUE_FLUSH, null, "BABY_LEARN_TTS")
+            val textToSpeak = when (currentLang) {
+                "hi" -> text
+                "en" -> text
+                else -> TranslationHelper.translate(text, currentLang)
+            }
+            tts?.speak(textToSpeak, TextToSpeech.QUEUE_FLUSH, null, "BABY_LEARN_TTS")
         }
     }
 
     fun toggleLanguage() {
         viewModelScope.launch {
             progressRepository.toggleLanguage()
-            // Wait brief moment for flow update then set TTS language
             updateTtsLanguage()
             speak("English language selected", "हिंदी भाषा चुनी गई")
+        }
+    }
+
+    fun setLanguage(langCode: String) {
+        viewModelScope.launch {
+            progressRepository.changeLanguage(langCode)
+            val welcomeTextEn = "Language selected"
+            val welcomeTextHi = "भाषा चुनी गई"
+            val welcomeTextEs = "Idioma seleccionado"
+            val welcomeTextFr = "Langue sélectionnée"
+            val welcomeTextAr = "تم اختيار اللغة"
+            
+            val spokenText = when (langCode) {
+                "hi" -> welcomeTextHi
+                "es" -> welcomeTextEs
+                "fr" -> welcomeTextFr
+                "ar" -> welcomeTextAr
+                else -> welcomeTextEn
+            }
+            
+            val locale = when (langCode) {
+                "hi" -> Locale("hi", "IN")
+                "es" -> Locale("es", "ES")
+                "fr" -> Locale.FRANCE
+                "ar" -> Locale("ar")
+                else -> Locale.US
+            }
+            tts?.language = locale
+            tts?.speak(spokenText, TextToSpeech.QUEUE_FLUSH, null, "BABY_LEARN_TTS")
         }
     }
 

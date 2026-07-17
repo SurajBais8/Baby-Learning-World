@@ -64,6 +64,11 @@ class ProgressRepository(private val progressDao: ProgressDao) {
         saveProgress(current.copy(lang = newLang))
     }
 
+    suspend fun changeLanguage(langCode: String) {
+        val current = getProgress()
+        saveProgress(current.copy(lang = langCode))
+    }
+
     suspend fun toggleDarkMode() {
         val current = getProgress()
         saveProgress(current.copy(isDarkMode = !current.isDarkMode))

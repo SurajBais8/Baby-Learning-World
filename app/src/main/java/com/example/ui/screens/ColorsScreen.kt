@@ -122,7 +122,7 @@ fun ColorsScreen(
                         modifier = Modifier.fillMaxSize()
                     ) {
                         items(LearningData.colorList) { colorItem ->
-                            val colorVal = Color(colorItem.colorHex.toLong())
+                            val colorVal = Color(colorItem.colorHex.removePrefix("0x").toLong(16))
 
                             Card(
                                 modifier = Modifier
@@ -178,7 +178,7 @@ fun ColorsScreen(
             } else {
                 // Interactive Color Match Game Screen
                 val targetColor = viewModel.colorTarget
-                val targetColorVal = Color(targetColor.colorHex.toLong())
+                val targetColorVal = Color(targetColor.colorHex.removePrefix("0x").toLong(16))
 
                 Column(
                     modifier = Modifier
@@ -227,7 +227,7 @@ fun ColorsScreen(
                                 horizontalArrangement = Arrangement.SpaceAround
                             ) {
                                 viewModel.colorOptions.forEach { option ->
-                                    val optionColor = Color(option.colorHex.toLong())
+                                    val optionColor = Color(option.colorHex.removePrefix("0x").toLong(16))
 
                                     Box(
                                         modifier = Modifier

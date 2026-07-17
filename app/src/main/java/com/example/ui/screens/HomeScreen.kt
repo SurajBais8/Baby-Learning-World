@@ -78,6 +78,36 @@ private fun getModuleColorProfile(route: String, isDark: Boolean): ColorProfile 
             textColor = if (isDark) Color(0xFFB388FF) else Color(0xFF9575CD),
             bottomBorderColor = if (isDark) Color(0xFF4527A0) else Color(0xFFD1C4E9)
         )
+        "birds" -> ColorProfile(
+            emojiBg = if (isDark) Color(0x33B2EBF2) else Color(0xFFE0F7FA),
+            textColor = if (isDark) Color(0xFF84FFFF) else Color(0xFF00ACC1),
+            bottomBorderColor = if (isDark) Color(0xFF006064) else Color(0xFFB2EBF2)
+        )
+        "vegetables" -> ColorProfile(
+            emojiBg = if (isDark) Color(0x33C8E6C9) else Color(0xFFE8F5E9),
+            textColor = if (isDark) Color(0xFFB9F6CA) else Color(0xFF4CAF50),
+            bottomBorderColor = if (isDark) Color(0xFF1B5E20) else Color(0xFFC8E6C9)
+        )
+        "body_parts" -> ColorProfile(
+            emojiBg = if (isDark) Color(0x33FFE0B2) else Color(0xFFFFF3E0),
+            textColor = if (isDark) Color(0xFFFFD180) else Color(0xFFFF9800),
+            bottomBorderColor = if (isDark) Color(0xFFE65100) else Color(0xFFFFE0B2)
+        )
+        "quiz" -> ColorProfile(
+            emojiBg = if (isDark) Color(0x33FFF9C4) else Color(0xFFFFFDE7),
+            textColor = if (isDark) Color(0xFFFFE57F) else Color(0xFFFBC02D),
+            bottomBorderColor = if (isDark) Color(0xFFF57F17) else Color(0xFFFFF9C4)
+        )
+        "drawing" -> ColorProfile(
+            emojiBg = if (isDark) Color(0x33F8BBD0) else Color(0xFFFCE4EC),
+            textColor = if (isDark) Color(0xFFFF80AB) else Color(0xFFF06292),
+            bottomBorderColor = if (isDark) Color(0xFFC2185B) else Color(0xFFF8BBD0)
+        )
+        "settings" -> ColorProfile(
+            emojiBg = if (isDark) Color(0x33CFD8DC) else Color(0xFFECEFF1),
+            textColor = if (isDark) Color(0xFF90A4AE) else Color(0xFF607D8B),
+            bottomBorderColor = if (isDark) Color(0xFF37474F) else Color(0xFFCFD8DC)
+        )
         "memory" -> ColorProfile(
             emojiBg = if (isDark) Color(0x33C5CAE9) else Color(0xFFE8EAF6),
             textColor = if (isDark) Color(0xFF8C9EFF) else Color(0xFF7986CB),
@@ -92,6 +122,26 @@ private fun getModuleColorProfile(route: String, isDark: Boolean): ColorProfile 
             emojiBg = if (isDark) Color(0x33E1BEE7) else Color(0xFFFDF0FF),
             textColor = if (isDark) Color(0xFFEA80FC) else Color(0xFFBA68C8),
             bottomBorderColor = if (isDark) Color(0xFF6A1B9A) else Color(0xFFE1BEE7)
+        )
+        "habits" -> ColorProfile(
+            emojiBg = if (isDark) Color(0x33C8E6C9) else Color(0xFFE8F5E9),
+            textColor = if (isDark) Color(0xFFB9F6CA) else Color(0xFF81C784),
+            bottomBorderColor = if (isDark) Color(0xFF2E7D32) else Color(0xFFC8E6C9)
+        )
+        "opposites" -> ColorProfile(
+            emojiBg = if (isDark) Color(0x33FFE0B2) else Color(0xFFFFF3E0),
+            textColor = if (isDark) Color(0xFFFFD180) else Color(0xFFFFB74D),
+            bottomBorderColor = if (isDark) Color(0xFFEF6C00) else Color(0xFFFFE0B2)
+        )
+        "planets" -> ColorProfile(
+            emojiBg = if (isDark) Color(0x33C5CAE9) else Color(0xFFE8EAF6),
+            textColor = if (isDark) Color(0xFF8C9EFF) else Color(0xFF7986CB),
+            bottomBorderColor = if (isDark) Color(0xFF283593) else Color(0xFFC5CAE9)
+        )
+        "instruments" -> ColorProfile(
+            emojiBg = if (isDark) Color(0x33BBDEFB) else Color(0xFFE3F2FD),
+            textColor = if (isDark) Color(0xFF82B1FF) else Color(0xFF64B5F6),
+            bottomBorderColor = if (isDark) Color(0xFF1565C0) else Color(0xFFBBDEFB)
         )
         else -> ColorProfile( // parent_rewards
             emojiBg = if (isDark) Color(0x33B2DFDB) else Color(0xFFE0F2F1),
@@ -129,13 +179,22 @@ fun HomeScreen(
         ActivityModule("numbers", "1-100 Numbers", "१-१०० संख्याएं", "🔢", "btn_numbers"),
         ActivityModule("colors", "Color World", "रंगों की दुनिया", "🎨", "btn_colors"),
         ActivityModule("animals", "Animals Play", "पशु और आवाज", "🦁", "btn_animals"),
-        ActivityModule("fruits", "Fruits & Veg", "फल और सब्जी", "🍎", "btn_fruits"),
+        ActivityModule("birds", "Birds Play", "पक्षी और आवाज", "🦜", "btn_birds"),
         ActivityModule("vehicles", "Vehicles Zoo", "गाड़ियों का सफर", "🚗", "btn_vehicles"),
+        ActivityModule("fruits", "Fruits Play", "फलों का राजा", "🍎", "btn_fruits"),
+        ActivityModule("vegetables", "Vegetables Play", "सब्जियां सीखें", "🥦", "btn_vegetables"),
         ActivityModule("shapes", "Fun Shapes", "मजेदार आकार", "🔺", "btn_shapes"),
-        ActivityModule("memory", "Memory Match", "दिमागी खेल", "🧩", "btn_memory"),
-        ActivityModule("tracing", "Tracer Star", "लिखना सीखें", "✍️", "btn_tracing"),
-        ActivityModule("balloon_pop", "Balloon Pop", "गुब्बारा फोड़ें", "🎈", "btn_balloon"),
-        ActivityModule("parent_rewards", "Parent & Stars", "माता-पिता और सितारे", "👨‍👩‍👧", "btn_parent")
+        ActivityModule("body_parts", "Body Parts", "शरीर के अंग", "🙆", "btn_body_parts"),
+        ActivityModule("quiz", "Kids Quiz", "प्रश्नोत्तरी", "❓", "btn_quiz"),
+        ActivityModule("drawing", "Drawing Mode", "ड्रॉइंग बोर्ड", "🎨", "btn_drawing"),
+        ActivityModule("memory", "Memory Game", "मेमोरी खेल", "🧩", "btn_memory"),
+        ActivityModule("balloon_pop", "Balloon Pop", "गुब्बारा फोड़", "🎈", "btn_balloon_pop"),
+        ActivityModule("habits", "Good Habits", "अच्छी आदतें", "😇", "btn_habits"),
+        ActivityModule("opposites", "Opposites", "उलटे शब्द", "↕️", "btn_opposites"),
+        ActivityModule("planets", "Solar System", "सौर मंडल", "🌌", "btn_planets"),
+        ActivityModule("instruments", "Instruments", "वाद्ययंत्र", "🥁", "btn_instruments"),
+        ActivityModule("parent_rewards", "Rewards Cabinet", "पुरस्कार और सितारे", "🏅", "btn_parent"),
+        ActivityModule("settings", "App Settings", "सेटिंग्स", "⚙️", "btn_settings")
     )
 
     Scaffold(
